@@ -1,103 +1,103 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>URL Shortener - লিংক ছোট করুন</title>
+    <title>URL Shortener - Shorten Your Links</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <!-- হেডার -->
+        <!-- Header -->
         <header class="header">
             <h1>🔗 URL Shortener</h1>
-            <p>আপনার লিংক ছোট করুন এবং ট্রাফিক ট্র্যাক করুন</p>
+            <p>Shorten your links and track traffic in real-time</p>
         </header>
 
-        <!-- ট্যাব নেভিগেশন -->
+        <!-- Tab Navigation -->
         <div class="tabs">
-            <button class="tab-btn active" onclick="showTab('create')">নতুন লিংক তৈরি করুন</button>
-            <button class="tab-btn" onclick="showTab('stats')">পরিসংখ্যান দেখুন</button>
+            <button class="tab-btn active" onclick="showTab('create')">Create New Link</button>
+            <button class="tab-btn" onclick="showTab('stats')">View Statistics</button>
         </div>
 
-        <!-- ট্যাব 1: নতুন লিংক তৈরি করুন -->
+        <!-- Tab 1: Create New Link -->
         <div id="create" class="tab-content active">
             <div class="form-container">
-                <h2>নতুন শর্টেনড লিংক তৈরি করুন</h2>
+                <h2>Create a Shortened Link</h2>
                 
                 <div class="form-group">
-                    <label for="originalUrl">আসল URL:</label>
+                    <label for="originalUrl">Original URL:</label>
                     <input type="url" id="originalUrl" placeholder="https://example.com/very-long-url" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="title">টাইটেল:</label>
-                    <input type="text" id="title" placeholder="আপনার লিংকের নাম দিন" required>
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" placeholder="Give your link a name" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="imageUrl">ইমেজ URL:</label>
+                    <label for="imageUrl">Image URL:</label>
                     <input type="url" id="imageUrl" placeholder="https://example.com/image.jpg">
-                    <small>ছবি যোগ করুন (ঐচ্ছিক)</small>
+                    <small>Add an image (optional)</small>
                 </div>
 
                 <div class="form-group">
-                    <label for="description">বর্ণনা:</label>
-                    <textarea id="description" placeholder="এই লিংক সম্পর্কে কিছু বলুন..." rows="3"></textarea>
+                    <label for="description">Description:</label>
+                    <textarea id="description" placeholder="Tell us about this link..." rows="3"></textarea>
                 </div>
 
-                <button class="btn-primary" onclick="createShortLink()">শর্টেনড লিংক তৈরি করুন</button>
+                <button class="btn-primary" onclick="createShortLink()">Create Shortened Link</button>
             </div>
 
-            <!-- তৈরিকৃত লিংক প্রদর্শন -->
+            <!-- Display Created Link -->
             <div id="resultContainer" class="result-container" style="display:none;">
-                <h3>✅ আপনার শর্টেনড লিংক প্রস্তুত!</h3>
+                <h3>✅ Your shortened link is ready!</h3>
                 <div class="result-box">
                     <div class="result-item">
-                        <label>শর্টেনড লিংক:</label>
+                        <label>Shortened Link:</label>
                         <div class="copy-container">
                             <input type="text" id="shortLink" readonly>
-                            <button class="btn-copy" onclick="copyToClipboard('shortLink')">কপি করুন</button>
+                            <button class="btn-copy" onclick="copyToClipboard('shortLink')">Copy</button>
                         </div>
                     </div>
                     <div class="result-item">
-                        <label>কিউআর কোড:</label>
+                        <label>QR Code:</label>
                         <div id="qrCode"></div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- ট্যাব 2: পরিসংখ্যান দেখুন -->
+        <!-- Tab 2: View Statistics -->
         <div id="stats" class="tab-content">
             <div class="stats-container">
-                <h2>📊 আপনার লিংকের পরিসংখ্যান</h2>
+                <h2>📊 Link Statistics</h2>
                 
                 <div class="stats-header">
                     <div class="stat-card">
-                        <h3>মোট লিংক</h3>
+                        <h3>Total Links</h3>
                         <p class="stat-number" id="totalLinks">0</p>
                     </div>
                     <div class="stat-card">
-                        <h3>মোট ক্লিক</h3>
+                        <h3>Total Clicks</h3>
                         <p class="stat-number" id="totalClicks">0</p>
                     </div>
                 </div>
 
                 <div id="linksList" class="links-list">
-                    <p class="empty-message">এখনও কোনো লিংক তৈরি করা হয়নি।</p>
+                    <p class="empty-message">No links created yet.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- লিংক রিডিরেক্ট পেজ (লুকানো) -->
+    <!-- Link Redirect Page (Hidden) -->
     <div id="redirectPage" class="redirect-page" style="display:none;">
         <div class="redirect-content">
             <img id="redirectImage" src="" alt="">
             <h2 id="redirectTitle"></h2>
             <p id="redirectDescription"></p>
-            <p class="redirect-message">আপনাকে রিডিরেক্ট করা হচ্ছে...</p>
+            <p class="redirect-message">Redirecting you...</p>
             <p class="redirect-url" id="redirectUrl"></p>
         </div>
     </div>
